@@ -4,7 +4,11 @@ let win;
 
 function createWindow() {
   Menu.setApplicationMenu(null);
-  win = new BrowserWindow({ show: false });
+  win = new BrowserWindow({ 
+    show: false,
+    icon: 'baby.ico',
+    webPreferences: {nodeIntegration: true }
+  });
   win.maximize();
   win.show();
 
