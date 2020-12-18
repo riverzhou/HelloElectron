@@ -3,9 +3,9 @@ const { app, screen, Menu, BrowserWindow } = require("electron");
 let win;
 
 function createWindow() {
+  Menu.setApplicationMenu(null);
   win = new BrowserWindow({ show: false });
   win.maximize();
-  Menu.setApplicationMenu(null);
   win.show();
 
   var winW = screen.getPrimaryDisplay().workAreaSize.width;
@@ -13,6 +13,7 @@ function createWindow() {
 
   win.loadURL(`http://127.0.0.1:5000/?w=${winW}&h=${winH}`);
 
+  //win.loadURL(`http://127.0.0.1:9524/?w=${winW}&h=${winH}`);
   //win.loadURL('http://ie.icoa.cn')
   //win.webContents.openDevTools()
 

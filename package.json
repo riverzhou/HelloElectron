@@ -1,10 +1,20 @@
 {
-  "name": "Hello",
-  "version": "1.0.0",
+  "name": "hello",
+  "version": "1.0.1",
   "description": "Hello World!",
   "main": "main.js",
   "scripts": {
-        "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "cn.riverzhou.hello",
+    "win": {
+      "target": [
+        "zip"
+      ],
+      "icon": "tools.ico"
+    }
   },
   "author": "River Zhou",
   "license": "ISC",
