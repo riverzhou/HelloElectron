@@ -1,26 +1,29 @@
 const { app, screen, Menu, BrowserWindow } = require("electron");
-var path = require('path')
+var path = require("path");
+
 let win;
 
 function createWindow() {
   Menu.setApplicationMenu(null);
-  win = new BrowserWindow({ 
-    show: false,
-    icon: path.join(__dirname, 'baby.ico'),
-    webPreferences: {nodeIntegration: true }
+  win = new BrowserWindow({
+    width: 500,
+    height: 310,
+    icon: path.join(__dirname, "baby.ico"),
+    resizable: false,
+    maximizable: false,
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
+    },
   });
-  win.maximize();
-  win.show();
 
-  var winW = screen.getPrimaryDisplay().workAreaSize.width;
-  var winH = screen.getPrimaryDisplay().workAreaSize.height;
+  win.loadFile("index.html");
 
-  win.loadURL(`http://127.0.0.1:9524/?w=${winW}&h=${winH}`);
-
+  //winW = screen.getPrimaryDisplay().workAreaSize.width;
+  //winH = screen.getPrimaryDisplay().workAreaSize.height;
   //win.loadURL(`http://127.0.0.1:9524/?w=${winW}&h=${winH}`);
   //win.loadURL('http://ie.icoa.cn');
   //win.webContents.openDevTools();
-  //console.log(__dirname);
 
   win.on("closed", () => {
     win = null;

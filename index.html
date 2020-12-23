@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+
+  <head>
+    <title>落雪的修行</title>
+
+    <script type="text/javascript">
+      const { remote } = require("electron");
+      const screen = require("electron").remote.screen;
+
+      const win = remote.getCurrentWindow();
+      const winW = screen.getPrimaryDisplay().workAreaSize.width;
+      const winH = screen.getPrimaryDisplay().workAreaSize.height;
+
+      function login() {
+        var ip = document.getElementById("serverip").value;
+        win.hide();
+        setTimeout(() => {
+          win.maximize();
+          setTimeout(() => {
+            win.loadURL(`http://${ip}:9524/?w=${winW}&h=${winH}`);
+            setTimeout(() => {
+              win.show();
+            }, 0);
+          }, 0);
+        }, 0);
+      }
+    </script>
+
+    <style>
+      body {
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 15px;
+      }
+
+      p.title {
+        font-size: 200%;
+        color: blue;
+      }
+
+      div.main {
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 35px;
+      }
+
+      #dologin {
+        font-size: 130%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="title">
+      <b> 智云安云数据可视化系统 </b>
+    </p>
+    <div class="main">
+      服务器地址 <input type="text" id="serverip" value="127.0.0.1" /><br />
+      用户名&emsp;&emsp; <input type="text" id="username" value="" /><br />
+      密码&emsp;&emsp;&emsp; <input type="password" id="password" value="" /><br />
+      <br />
+      &emsp;<input type="button" id="dologin" onclick="login()" value="登录系统" /><br />
+    </div>
+  </body>
+</html>
